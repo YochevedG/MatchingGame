@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MAUIMatchingGame.MatchingGame"
+             Title="MatchingGame">
+    <ContentPage.Resources>
+        <Style TargetType="Label">
+            <Setter Property="BackgroundColor" Value="Beige"/>
+            <Setter Property="Margin" Value="5"/>
+        </Style>
+    </ContentPage.Resources>
+    <Grid ColumnDefinitions="*" RowDefinitions="*,5*">
+        <Grid ColumnDefinitions="Auto,Auto,Auto,*" RowDefinitions="*,*" Grid.Column="0" Grid.Row="0">
+            <Label x:Name="lblScore" Text="Score:" Grid.Column="0" Grid.Row="0"/>
+            <Label x:Name="lblPlayer1" Text="Player 1: ________" Grid.Column="0" Grid.Row="1"/>
+            <Label x:Name="lblPlayer2" Text="Player 2: ________" Grid.Column="1" Grid.Row="1"/>
+            <Label x:Name="lblCurrentTurn" Text="Current Turn: Player 1" Grid.Column="2" Grid.Row="1"/>
+            <Button x:Name="btnStart" Text="Start" Grid.Column="3" Grid.Row="0"/>
+
+        </Grid>
+        <Grid Margin="5" ColumnDefinitions="*,*,*,*,*,*,*" RowDefinitions="*,*,*,*,*,*" Grid.Column="0" Grid.Row="1">
+            <Label x:Name="lbl1" Text="1" Grid.Column="0" Grid.Row="0"/>
+            <Label x:Name="lbl2" Text="1" Grid.Column="1" Grid.Row="0"/>
+            <Label x:Name="lbl3" Text="1" Grid.Column="2" Grid.Row="0"/>
+            <Label x:Name="lbl4" Text="1" Grid.Column="3" Grid.Row="0"/>
+            <Label x:Name="lbl5" Text="1" Grid.Column="4" Grid.Row="0"/>
+            <Label x:Name="lbl6" Text="1" Grid.Column="5" Grid.Row="0"/>
+            <Label x:Name="lbl7" Text="1" Grid.Column="6" Grid.Row="0"/>
+            <Label x:Name="lbl8" Text="1" Grid.Column="0" Grid.Row="1"/>
+            <Label x:Name="lbl9" Text="1" Grid.Column="0" Grid.Row="2"/>
+            <Label x:Name="lbl10" Text="1" Grid.Column="0" Grid.Row="3"/>
+            <Label x:Name="lbl11" Text="1" Grid.Column="0" Grid.Row="4"/>
+            <Label x:Name="lbl12" Text="1" Grid.Column="0" Grid.Row="5"/>
+            <Label x:Name="lbl13" Text="1" Grid.Column="0" Grid.Row="6"/>
+            <Label x:Name="lbl14" Text="1" Grid.Column="0" Grid.Row="7"/>
+            <Label x:Name="lbl15" Text="1" Grid.Column="1" Grid.Row="1"/>
+            <Label x:Name="lbl16" Text="1" Grid.Column="2" Grid.Row="1"/>
+            <Label x:Name="lbl17" Text="1" Grid.Column="3" Grid.Row="1"/>
+            <Label x:Name="lbl18" Text="1" Grid.Column="4" Grid.Row="1"/>
+            <Label x:Name="lbl19" Text="1" Grid.Column="5" Grid.Row="1"/>
+            <Label x:Name="lbl20" Text="1" Grid.Column="6" Grid.Row="1"/>
+            <Label x:Name="lbl21" Text="1" Grid.Column="1" Grid.Row="2"/>
+            <Label x:Name="lbl22" Text="1" Grid.Column="2" Grid.Row="2"/>
+            <Label x:Name="lbl23" Text="1" Grid.Column="3" Grid.Row="2"/>
+            <Label x:Name="lbl24" Text="1" Grid.Column="4" Grid.Row="2"/>
+            <Label x:Name="lbl25" Text="1" Grid.Column="5" Grid.Row="2"/>
+            <Label x:Name="lbl26" Text="1" Grid.Column="6" Grid.Row="2"/>
+            <Label x:Name="lbl27" Text="1" Grid.Column="1" Grid.Row="3"/>
+            <Label x:Name="lbl28" Text="1" Grid.Column="2" Grid.Row="3"/>
+            <Label x:Name="lbl29" Text="1" Grid.Column="3" Grid.Row="3"/>
+            <Label x:Name="lbl30" Text="1" Grid.Column="4" Grid.Row="3"/>
+            <Label x:Name="lbl31" Text="1" Grid.Column="5" Grid.Row="3"/>
+            <Label x:Name="lbl32" Text="1" Grid.Column="6" Grid.Row="3"/>
+            <Label x:Name="lbl33" Text="1" Grid.Column="1" Grid.Row="4"/>
+            <Label x:Name="lbl34" Text="1" Grid.Column="2" Grid.Row="4"/>
+            <Label x:Name="lbl35" Text="1" Grid.Column="3" Grid.Row="4"/>
+            <Label x:Name="lbl36" Text="1" Grid.Column="4" Grid.Row="4"/>
+            <Label x:Name="lbl37" Text="1" Grid.Column="5" Grid.Row="4"/>
+            <Label x:Name="lbl38" Text="1" Grid.Column="6" Grid.Row="4"/>
+            <Label x:Name="lbl39" Text="1" Grid.Column="1" Grid.Row="5"/>
+            <Label x:Name="lbl40" Text="1" Grid.Column="2" Grid.Row="5"/>
+            <Label x:Name="lbl41" Text="1" Grid.Column="3" Grid.Row="5"/>
+            <Label x:Name="lbl42" Text="1" Grid.Column="4" Grid.Row="5"/>
+            <Label x:Name="lbl43" Text="1" Grid.Column="5" Grid.Row="5"/>
+            <Label x:Name="lbl44" Text="1" Grid.Column="6" Grid.Row="5"/>
+        </Grid>
+    </Grid>
+</ContentPage>
