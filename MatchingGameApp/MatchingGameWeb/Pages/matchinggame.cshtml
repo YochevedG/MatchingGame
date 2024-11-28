@@ -1,0 +1,121 @@
+﻿@page
+@model MatchingGameWeb.Pages.matchinggameModel
+@{
+}
+<link rel="stylesheet" href="@Url.Content("~/css/matchinggamestyles.css")">
+
+<div class="container">
+    <h1>Matching Game</h1>
+    <div id="scoreboard">
+        <div>Player 1 Score: <span id="scorePlayer1">0</span></div>
+        <div>Player 2 Score: <span id="scorePlayer2">0</span></div>
+        <div id="currentTurn">Current Turn: Player 1</div>
+    </div>
+    <button id="startButton">Start Game</button>
+    <div id="gameBoard" class="game-board"></div>
+</div>
+
+<script>
+    document.getElementById("startButton").addEventListener("click", startGame);
+
+    const numbers = [
+        "1", "1", "2", "2", "3", "3", "4", "4", "5", "5",
+        "6", "6", "7", "7", "8", "8", "9", "9", "10", "10",
+        "11", "11", "12", "12", "13", "13", "14", "14",
+        "15", "15", "16", "16", "17", "17", "18", "18",
+        "19", "19", "20", "20"
+    ];
+
+    let firstClicked = null;
+    let secondClicked = null;
+    let currentTurn = 'Player 1';
+    let scores = { 'Player 1': 0, 'Player 2': 0 };
+    let gameStarted = false;
+    createGameBoard();
+
+    function createGameBoard() {
+        const board = document.getElementById('gameBoard');
+        numbers.sort(() => Math.random() - 0.5);
+
+        board.innerHTML = '';
+
+        numbers.forEach(num => {
+            const card = document.createElement('div');
+            card.classList.add('card', 'disabled'); 
+            card.dataset.number = num;
+            card.addEventListener('click', clickCard);
+            board.appendChild(card);
+        });
+    }
+
+    function startGame() {
+        gameStarted = true;
+        resetGame();
+        createGameBoard();
+        enableCards(); 
+        updateCurrentTurn();
+    }
+
+    function resetGame() {
+        firstClicked = null;
+        secondClicked = null;
+        document.getElementById('scorePlayer1').innerText = scores['Player 1'];
+        document.getElementById('scorePlayer2').innerText = scores['Player 2'];
+        document.getElementById('currentTurn').innerText = `Current Turn: ${currentTurn}`;
+    }
+
+    function enableCards() {
+        const cards = document.querySelectorAll('.card');
+        cards.forEach(card => {
+            card.classList.remove('disabled'); 
+        });
+    }
+
+    function clickCard(event) {
+        if (!gameStarted || event.target.classList.contains('revealed')) return;
+
+        const clickedCard = event.target;
+        clickedCard.classList.add('revealed');
+        clickedCard.innerText = clickedCard.dataset.number;
+
+        if (!firstClicked) {
+            firstClicked = clickedCard;
+        } else {
+            secondClicked = clickedCard;
+            checkForMatch();
+        }
+    }
+
+    function checkForMatch() {
+        if (firstClicked.dataset.number === secondClicked.dataset.number) {
+            scores[currentTurn]++;
+            updateScores();
+            resetTurn();
+        } else {
+            setTimeout(() => {
+                firstClicked.classList.remove('revealed');
+                secondClicked.classList.remove('revealed');
+                resetTurn();
+            }, 1500);
+        }
+        updateCurrentTurn();
+    }
+
+    function updateScores() {
+        document.getElementById('scorePlayer1').innerText = scores['Player 1'];
+        document.getElementById('scorePlayer2').innerText = scores['Player 2'];
+    }
+
+    function resetTurn() {
+        firstClicked = null;
+        secondClicked = null;
+        currentTurn = currentTurn === 'Player 1' ? 'Player 2' : 'Player 1';
+        updateCurrentTurn();
+    }
+
+    function updateCurrentTurn() {
+        document.getElementById('currentTurn').innerText = `Current Turn: ${currentTurn}`;
+    }
+</script>
+
+

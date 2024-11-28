@@ -5,7 +5,9 @@ VisualStudioVersion = 17.8.34525.116
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MatchingGameApp", "MatchingGameApp\MatchingGameApp.csproj", "{2CFAF74E-C109-46F9-82E8-7D2BA87EBA82}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MAUIMatchingGame", "MAUIMatchingGame\MAUIMatchingGame.csproj", "{1B0A9D11-4B40-46B7-BE03-D0601FF98B39}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MAUIMatchingGame", "MAUIMatchingGame\MAUIMatchingGame.csproj", "{1B0A9D11-4B40-46B7-BE03-D0601FF98B39}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MatchingGameWeb", "MatchingGameWeb\MatchingGameWeb.csproj", "{D8DB1FDB-17F3-4289-8653-609F5BB03D51}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -23,6 +25,10 @@ Global
 		{1B0A9D11-4B40-46B7-BE03-D0601FF98B39}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1B0A9D11-4B40-46B7-BE03-D0601FF98B39}.Release|Any CPU.Build.0 = Release|Any CPU
 		{1B0A9D11-4B40-46B7-BE03-D0601FF98B39}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{D8DB1FDB-17F3-4289-8653-609F5BB03D51}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D8DB1FDB-17F3-4289-8653-609F5BB03D51}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D8DB1FDB-17F3-4289-8653-609F5BB03D51}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D8DB1FDB-17F3-4289-8653-609F5BB03D51}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

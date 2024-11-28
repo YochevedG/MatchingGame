@@ -1,0 +1,39 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+
+<div class="container">
+    <h1>Overview</h1>
+    <p>
+        This document provides the requirements for creating the software implementation for the
+        classic game of Matching. This software will allow two players to compete in playing this
+        game. Below is a full description of this implementation and how the software will create
+        this game.
+    </p>
+
+    <h2>The Game</h2>
+    <p>
+        20 cards are laid out in a 10x10 presentation. All cards are disabled to click until the first
+        player clicks the Start button. Player 1 clicks on 2 cards and the card displays a number. If
+        the numbers are a match, the 2 cards are removed and are rewarded in points to the player.
+        (One set of cards = one point). If the set was a match, the player gets to go again. If
+        the set was not a match, the cards get turned back over and Player 2 goes and picks a set.
+    </p>
+
+    <h2>The Winner</h2>
+    <p>
+        When there are no more cards left, the player with the most points is the Winner.
+    </p>
+
+    <h2>Software Implementation - UI</h2>
+    <p>The game presentation will have a UI as described below:</p>
+    <ul>
+        <li>10 * 10 board of buttons (cards)</li>
+        <li>
+            Toolbar with Start button, message displaying which player’s turn it is, and each
+            player’s current score
+        </li>
+    </ul>
+</div>
