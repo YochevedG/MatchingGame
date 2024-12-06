@@ -1,0 +1,18 @@
+﻿@page
+@model MatchingGameWeb.Pages.MatchingGameTSModel
+@{
+}
+<link rel="stylesheet" href="@Url.Content("~/css/matchinggamestyles.css")">
+
+<div class="container">
+    <h1>Matching Game</h1>
+    <div id="scoreboard">
+        <div>Player 1 Score: <span id="scorePlayer1">0</span></div>
+        <div>Player 2 Score: <span id="scorePlayer2">0</span></div>
+        <div id="currentTurn">Current Turn: Player 1</div>
+    </div>
+    <button id="startButton">Start Game</button>
+    <div id="gameBoard" class="game-board"></div>
+</div>
+
+<script src="~/js/MatchingGameTS.js" asp-append-version="true"></script>

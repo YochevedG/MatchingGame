@@ -1,0 +1,126 @@
+﻿@page
+@model MatchingGameWeb.Pages.MatchingGameJQueryModel
+@{
+}
+<link rel="stylesheet" href="@Url.Content("~/css/matchinggamestyles.css")">
+
+<div class="container">
+    <h1>Matching Game</h1>
+    <div id="scoreboard">
+        <div>Player 1 Score: <span id="scorePlayer1">0</span></div>
+        <div>Player 2 Score: <span id="scorePlayer2">0</span></div>
+        <div id="currentTurn">Current Turn: Player 1</div>
+    </div>
+    <button id="startButton">Start Game</button>
+    <div id="gameBoard" class="game-board"></div>
+</div>
+
+@section Scripts {
+    <script>
+        const numbers = [
+            "1", "1", "2", "2", "3", "3", "4", "4", "5", "5",
+            "6", "6", "7", "7", "8", "8", "9", "9", "10", "10",
+            "11", "11", "12", "12", "13", "13", "14", "14",
+            "15", "15", "16", "16", "17", "17", "18", "18",
+            "19", "19", "20", "20"
+        ];
+
+        let firstClicked = null;
+        let secondClicked = null;
+        let currentTurn = 'Player 1';
+        let scores = { 'Player 1': 0, 'Player 2': 0 };
+        let gameStarted = false;
+
+        $(document).ready(function () {
+            $("#startButton").click(startGame);
+            createGameBoard();
+
+
+            function createGameBoard() {
+                const board = document.getElementById('gameBoard');
+                numbers.sort(() => Math.random() - 0.5);
+
+                board.innerHTML = '';
+
+                numbers.forEach(num => {
+                    const card = document.createElement('div');
+                    card.classList.add('card', 'disabled');
+                    card.dataset.number = num;
+                    card.addEventListener('click', clickCard);
+                    board.appendChild(card);
+                });
+            }
+
+            function startGame() {
+                gameStarted = true;
+                resetGame();
+                createGameBoard();
+                enableCards();
+                updateCurrentTurn();
+            }
+
+            function resetGame() {
+                firstClicked = null;
+                secondClicked = null;
+                $('scorePlayer1').text(scores['Player 1']);
+                $('scorePlayer2').text(scores['Player 2']);
+                $('#currentTurn').text(`Current Turn: ${currentTurn}`);
+            }
+
+            function enableCards() {
+                $(".card").removeClass("disabled")
+            }
+
+            let clicksEnabled = true;
+
+            function clickCard(event) {
+                if (!gameStarted || !clicksEnabled || $(this).hasClass('revealed') || $(this).hasClass('disabled')) return;
+
+                const $clickedCard = $(this);
+                $clickedCard.addClass('revealed');
+                $clickedCard.text($clickedCard.data('number'));
+
+                if (!firstClicked) {
+                    firstClicked = $clickedCard[0]; 
+                } else {
+                    secondClicked = $clickedCard[0];
+                    checkForMatch();
+                }
+            }
+
+            function checkForMatch() {
+                clicksEnabled = false;
+                if (firstClicked.dataset.number === secondClicked.dataset.number) {
+                    scores[currentTurn]++;
+                    updateScores();
+                    resetTurn();
+                    clicksEnabled = true;
+                } else {
+                    setTimeout(() => {
+                        $(firstClicked).removeClass("revealed");
+                        $(secondClicked).removeClass("revealed");
+                        resetTurn();
+                        clicksEnabled = true;
+                    }, 1500);
+                }
+                updateCurrentTurn();
+            }
+
+            function updateScores() {
+                $('#scorePlayer1').text(scores['Player 1']);
+                $('#scorePlayer2').text(scores['Player 2']);
+            }
+
+            function resetTurn() {
+                firstClicked = null;
+                secondClicked = null;
+                currentTurn = currentTurn === 'Player 1' ? 'Player 2' : 'Player 1';
+                updateCurrentTurn();
+            }
+
+            function updateCurrentTurn() {
+                $('#currentTurn').text(`Current Turn: ${currentTurn}`);
+            }
+        });
+    </script>
+}

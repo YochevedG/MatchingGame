@@ -71,8 +71,10 @@
         });
     }
 
+    let clicksEnabled = true;
+
     function clickCard(event) {
-        if (!gameStarted || event.target.classList.contains('revealed')) return;
+        if (!gameStarted || !clicksEnabled || $(this).hasClass('revealed') || $(this).hasClass('disabled')) return;
 
         const clickedCard = event.target;
         clickedCard.classList.add('revealed');
@@ -87,15 +89,18 @@
     }
 
     function checkForMatch() {
+        clicksEnabled = false;
         if (firstClicked.dataset.number === secondClicked.dataset.number) {
             scores[currentTurn]++;
             updateScores();
             resetTurn();
+            clicksEnabled = true;
         } else {
             setTimeout(() => {
                 firstClicked.classList.remove('revealed');
                 secondClicked.classList.remove('revealed');
                 resetTurn();
+                clicksEnabled = true;
             }, 1500);
         }
         updateCurrentTurn();
